@@ -1,0 +1,45 @@
+// Woocommerce Remove Pricing by BladimirF Sept 29, 2023 Without Affecting Order-Received
+add_action('after_setup_theme', 'woo_bladimir_activate_filter');
+
+function woo_bladimir_activate_filter()
+{
+    if (!is_user_logged_in()) {
+        add_filter('woocommerce_get_price_html', 'woo_bladimir_hide_prices');
+        add_filter('woocommerce_cart_item_price', 'woo_bladimir_hide_cart_item_price', 10, 3);
+        add_filter('woocommerce_cart_item_subtotal', 'woo_bladimir_hide_cart_item_price', 10, 3);
+        add_filter('woocommerce_checkout_cart_item_quantity', 'woo_bladimir_hide_checkout_item_price', 10, 3);
+        add_filter('woocommerce_order_formatted_line_subtotal', 'woo_bladimir_hide_order_item_price', 10, 3);
+        add_filter('woocommerce_cart_subtotal', 'woo_bladimir_hide_cart_subtotal');
+        add_filter('woocommerce_cart_totals_order_total_html', 'woo_bladimir_hide_order_total');
+    }
+}
+
+function woo_bladimir_hide_prices($price)
+{
+    return '';
+}
+
+function woo_bladimir_hide_cart_item_price($price, $cart_item, $cart_item_key)
+{
+    return '';
+}
+
+function woo_bladimir_hide_checkout_item_price($quantity_html, $cart_item, $cart_item_key)
+{
+    return '';
+}
+
+function woo_bladimir_hide_order_item_price($subtotal, $item, $order, $inc_tax = false, $round = true)
+{
+    return '';
+}
+
+function woo_bladimir_hide_cart_subtotal($subtotal)
+{
+    return '';
+}
+
+function woo_bladimir_hide_order_total($total)
+{
+    return '';
+}
